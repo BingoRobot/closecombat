@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Види ближнього бою</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #cfad69;
+            color: #333;
+        }
+        header {
+            background-color: #8a7346;
+            color: black;
+            text-align: center;
+            padding: 25px;
+        }
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            background: #b5985c;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        /* Основні сторінки (Вступ / Категорії) */
+        .section-page {
+            display: none;
+        }
+        .section-page.active-page {
+            display: block;
+        }
+        /* Меню категорій (головні вкладки) */
+        .main-category-menu {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #cfad69;
+            padding-bottom: 15px;
+        }
+        /* Меню підкатегорій (конкретні види бою) */
+        .sub-category-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+            background: #806b41;
+            padding: 12px;
+            border-radius: 6px;
+        }
+        .tab-btn {
+            background-color: #5e4f2f;
+            border: none;
+            padding: 10px 18px;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .tab-btn:hover {
+            background-color: #b3a078;
+        }
+        .tab-btn.active {
+            background-color: #ad9d7b;
+            color: white;
+        }
+        /* Контент підкатегорій */
+        .sub-content {
+            display: none;
+            background: #a18752;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .sub-content.active-sub {
+            display: block;
+        }
+        h2 {
+            color: black;
+        }
+        h3 {
+            color: black;
+        }
+        img {
+            max-width: 350px;
+            height: auto;
+            border-radius: 5px;
+            display: block;
+            margin-top: 15px;
+            border: 1px solid #080808;
+        }
+        .main-btn {
+            display: inline-block;
+            background-color: #1e1f26;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .main-btn:hover {
+            background-color: #383a4a;
+        }
+        .back-nav-btn {
+            background-color: #a18752; 
+            color: black;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Види ближнього бою</h1>
+        <p>Виконав Іван Горенський</p>
+    </header>
+
+    <div class="container">
+
+        <!-- СТОРІНКА 1: ВСТУП -->
+        <div id="page-home" class="section-page active-page">
+            <h2>Ближній бій</h2>
+            <p>Ближній бій - це зіткнення супротивників на мінімальній дистанції із застосуванням різноманітних технік. На сайті всі бойові мистецтва розділені на три великі категорії: ударні стилі, борцівські та змішані.</p>
+            <p>Кожна категорія містить кілька відомих видів єдиноборств із коротким описом та ілюстраціями.</p>
+            <a href="#" class="main-btn" onclick="switchPage('page-categories')">Перейти до каталогів бою</a>
+        </div>
+
+        <!-- СТОРІНКА 2: ГОЛОВНІ КАТЕГОРІЇ ТА ПІДКАТЕГОРІЇ -->
+        <div id="page-categories" class="section-page">
+            
+            <button class="tab-btn back-nav-btn" onclick="switchPage('page-home')">⬅ На головну</button>
+
+            <!-- Головне меню категорій -->
+            <div class="main-category-menu">
+                <button class="tab-btn active" onclick="openMainCategory('cat-striking')">🥊 Ударні стилі</button>
+                <button class="tab-btn" onclick="openMainCategory('cat-grappling')">🤼 Борцівські стилі</button>
+                <button class="tab-btn" onclick="openMainCategory('cat-mixed')">🥋 Змішані стилі</button>
+            </div>
+
+            <!-- ================= КАТЕГОРІЯ 1: УДАРНІ ================= -->
+            <div id="cat-striking" class="main-content-section" style="display: block;">
+                <h2>Ударні стилі</h2>
+                <p>Оберіть конкретний вид бойового мистецтва зі списку нижче:</p>
+                
+                <!-- Підменю ударних -->
+                <div class="sub-category-menu">
+                    <button class="tab-btn active" onclick="openSubCategory(event, 'sub-boxing', 'cat-striking')">Бокс</button>
+                    <button class="tab-btn" onclick="openSubCategory(event, 'sub-karate', 'cat-striking')">Карате</button>
+                    <button class="tab-btn" onclick="openSubCategory(event, 'sub-kickboxing', 'cat-striking')">Кікбоксинг</button>
+                    <button class="tab-btn" onclick="openSubCategory(event, 'sub-muaythai', 'cat-striking')">Муай-тай</button>
+                </div>
+
+                <!-- Блоки контенту підкатегорій -->
+                <div id="sub-boxing" class="sub-content active-sub">
+                    <h3>Бокс</h3>
+                    <p>Класичний, контактний вид спорту, єдиноборство, в якому спортсмени наносять один одному удари кулаками в спеціальних рукавичках. Рефері контролює бій, який триває до 12 раундів (професійний бокс -12 раундів, аматорський бокс -3 раунди). Перемога боксера у випадку, якщо суперник збитий з ніг і не може піднятися протягом десяти секунд (нокаут) або якщо він отримав травму, яка не дозволяє продовжувати бій (технічний нокаут). Якщо після встановленої кількості раундів поєдинок не був припинений, то переможець визначається оцінками суддів.</p>
+                    <p>Найбільш ранні свідоцтва подібних змагань відображені ще на шумерських, єгипетських і мінойських рельєфах. Турніри з кулачних боїв, що нагадує бокс, проходили ще в Стародавній Греції. По-справжньому бокс став спортивним єдиноборством в 688 році до н. е., коли кулачні бої були вперше включені в програму античних Олімпійських ігор. Сучасний бокс зародився в Англії на початку XVIII століття.</p>
+                    <p>У деяких країнах існують власні різновиди боксу: французький бокс (симбіоз савата, англійського боксу і фехтування на тростинах) у Франції, летхвей в М'янмі, муай-тай в Таїланді; тому часто використовують термін "англійський бокс".</p>
+                    <p>Бокс є олімпійським видом спорту.</p>
+                    <img src="box.jpg" alt="Бокс">
+                </div>
+                <div id="sub-karate" class="sub-content">
+                    <h3>Карате</h3>
+                    <p>Японське мистецтво самозахисту за допомогою ударів, блоків та рухів. Удари завдаються як руками (кулаками, ребром долоні, відкритою рукою, ліктями), так і ногами (стопами, колінами). У різних стилях карате також вчать ударам у больові точки та життєво важливі ділянки, використанню захватів, викручуванню суглобів, замкам, утримуванням та кидкам. Людину, що практикує карате, називають каратистом. На даний момент близько 100 мільйонів людей на п'яти континентах і в 192 країнах займаються різними стилями карате, що робить його справді глобальним видом спорту.</p>
+                    <img src="karate.jpg" alt="Карате">
+                </div>
+                <div id="sub-kickboxing" class="sub-content">
+                    <h3>Кікбоксинг</h3>
+                    <p>Динамічний вид спортивного єдиноборства, у якому поєднуються техніка боксу з ударами ногами, запозиченими зі східних бойових мистецтв, зокрема карате, муай тай та тхеквондо. У сучасному значенні кікбоксинг є регламентованим видом спорту, що включає різні дисципліни з чітко визначеними правилами, які встановлюються міжнародними організаціями (зокрема WAKO). У ширшому вжитку термін "кікбоксинг" іноді використовується як узагальнююча назва для ударних єдиноборств, у яких дозволені удари руками та ногами.</p>
+                    <img src="kickboxing.jpg" alt="Кікбоксинг">
+                </div>
+                <div id="sub-muaythai" class="sub-content">
+                    <h3>Муай-тай (Тайський бокс)</h3>
+                    <p>Мистецтво "вісьмох кінцівок",  що походить з Таїланду і практикується у багатьох частинах світу. В основі мистецтва лежить ударна техніка (удари руками і ногами). Муай тай походить від бойового мистецтва муай боран, а також має схожість з прадал сереєм (Камбоджа), летвеєм (М'янма), тамоєм (Малайзія) і лаоським боксом (Лаос). Муай тай має довгу історію в Таїланді, де є національним спортом.</p>
+                    <p>Муай тай також називають "бокс восьмируких", тому що в ньому широко та різноманітно використовуються руки, гомілки, лікті та коліна (тобто вісім ударних поверхонь). Таким чином, боєць має для завдавання удару вісім "контактних точок", на відміну від двох у боксі (кулаки) або чотирьох у кікбоксингу (кулаки, ступні). Муай тай по праву вважають одним із найжорстокіших видів бойових мистецтв на планеті.</p>
+                    <img src="muaythai.jpg" alt="Муай-тай">
+                </div>
+            </div>
+
+            <!-- ================= КАТЕГОРІЯ 2: БОРЦІВСЬКІ ================= -->
+            <div id="cat-grappling" class="main-content-section" style="display: none;">
+                <h2>Борцівські стилі</h2>
+                <p>Оберіть конкретний вид бойового мистецтва зі списку нижче:</p>
+                
+                <!-- Підменю борцівських -->
+                <div class="sub-category-menu">
+                    <button class="tab-btn active" onclick="openSubCategory(event, 'sub-judo', 'cat-grappling')">Дзюдо</button>
+                    <button class="tab-btn" onclick="openSubCategory(event, 'sub-bjj', 'cat-grappling')">Джиу-джитсу</button>
+                    <button class="tab-btn" onclick="openSubCategory(event, 'sub-greco', 'cat-grappling')">Греко-римська боротьба</button>
+                </div>
+
+                <!-- Блоки контенту підкатегорій -->
+                <div id="sub-judo" class="sub-content active-sub">
+                    <h3>Дзюдо</h3>
+                    <p>японське бойове мистецтво і вид спорту, що виникло на основі джіу-джитсу. Основні правила, принципи тренувань і проведення змагань були сформульовані Кано Дзіґоро. Датою народження вважається день створення Кано першої школи дзюдо в 1882. Починаючи з 2011 року, 28 жовтня (день народження засновника дзюдо Дзіґоро Кано) щорічно відзначатиметься як Всесвітній день дзюдо.</p>
+                    <img src="dzudo.jpg" alt="Дзюдо">
+                </div>
+                <div id="sub-bjj" class="sub-content">
+                    <h3>Джіу-джитсу</h3>
+                    <p>Японське бойове мистецтво, яке вивчає техніку і тактику ведення ближнього бою зі зброєю або без, та може бути використане в обороні або наступі, аби вбити або приборкати одного або більше супротивників. Деякі техніки джіу-джитсу були використані як основа для розвитку багатьох сучасних бойових мистецтв та єдиноборств, таких як дзюдо, айкідо, самбо, Бразильське джіу-джитсу та змішані єдиноборства (MMA).</p>
+                    <p>Боротьба відбувається переважно на підлозі (в партері), яка доводить, що завдяки правильній техніці та важелям менший боєць може перемогти важчого суперника.</p>
+                    <img src="jujutsu.jpg" alt="Джиу-джитсу">
+                </div>
+                <div id="sub-greco" class="sub-content">
+                    <h3>Греко-римська боротьба</h3>
+                    <p>європейський вид боротьби, мета якого - покласти супротивника на лопатки (туше). В цьому стилі боротьби суворо заборонено захоплення нижче пояса, підніжки.</p>
+                    <img src="greekromancombat.jpg" alt="Греко-римська боротьба">
+                </div>
+            </div>
+
+            <!-- ================= КАТЕГОРІЯ 3: ЗМІШАНІ ================= -->
+            <div id="cat-mixed" class="main-content-section" style="display: none;">
+                <h2>Змішані стилі</h2>
+                <p>Оберіть конкретний вид бойового мистецтва зі списку нижче:</p>
+                
+                <!-- Підменю змішаних -->
+                <div class="sub-category-menu">
+                    <button class="tab-btn active" onclick="openSubCategory(event, 'sub-mma', 'cat-mixed')">MMA</button>
+                    <button class="tab-btn" onclick="openSubCategory(event, 'sub-aikido', 'cat-mixed')">Айкідо</button>
+                    <button class="tab-btn" onclick="openSubCategory(event, 'sub-hopak', 'cat-mixed')">Бойовий гопак</button>
+                </div>
+
+                <!-- Блоки контенту підкатегорій -->
+                <div id="sub-mma" class="sub-content active-sub">
+                    <h3>MMA (Mixed Martial Arts)</h3>
+                    <p>Змішані єдиноборства, де бійці використовують арсенал як ударної техніки (руки, ноги), так і боротьби (кидки, партер), що робить цей стиль універсальним.</p>
+                    <p>Основу змішаних бойових мистецтв складають класичні види боротьби (греко-римська і вільна боротьба, дзюдо, джиу-джитсу, тощо) і класична ударна техніка (бокс, муай тай та кікбоксинг). На відміну від класичних бойових мистецтв, які у своїй більшості походять із країн Сходу, змішані бойові мистецтва не несуть в собі духовного або релігійного навантаження, віддаючи перевагу спортивно-прикладному аспекту.</p>
+                    <img src="mma.jpg" alt="MMA">
+                </div>
+                <div id="sub-aikido" class="sub-content">
+                    <h3>Айкідо</h3>
+                    <p>Сучасне японське бойове мистецтво, створене Моріхеєм Уесібою як синтез його досліджень традиційних бойових мистецтв, філософії та релігійних переконань. Найчастіше айкідо перекладають як "шлях злиття з життєвою енергією" або "шлях гармонізації духу". Метою Уесіби було створення такого мистецтва, практики якого змогли б захистити від травм як себе, а й нападника.</p>
+                    <p>Техніки айкідо засновані на ухилянні від ударів противника, виведенні його з рівноваги та використанні енергії для виконання кидка або утримання. При цьому атакуючий айкідока сприяє оборонному у проведенні прийомів, здійснюючи рухи з достатньою плавністю, а у разі виконання кидків сприяє партнеру для того, щоб кидок був здійснений технічно та нетравматично.</p>
+                    <img src="aikido.jpg" alt="Айкідо">
+                </div>
+                <div id="sub-hopak" class="sub-content">
+                    <h3>Бойовий гопак</h3>
+                    <p>Українське національне бойове мистецтво, яке поєднує елементи традиційного танцю з потужними ударами ногами в стрибках, акробатикою та володінням традиційною зброєю.</p>
+                    <img src="combathopak.jpg" alt="Бойовий гопак">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript для логіки багаторівневого меню -->
+    <script>
+        // Перемикання головних сторінок (Вступ <-> Категорії)
+        function switchPage(pageId) {
+            const pages = document.querySelectorAll('.section-page');
+            pages.forEach(page => page.classList.remove('active-page'));
+            document.getElementById(pageId).classList.add('active-page');
+        }
+
+        // Перемикання головних категорій (Ударні / Борцівські / Змішані)
+        function openMainCategory(catId) {
+            // Ховаємо всі розділи головних категорій
+            const sections = document.querySelectorAll('.main-content-section');
+            sections.forEach(sec => sec.style.display = 'none');
+
+            // Показуємо потрібний розділ
+            document.getElementById(catId).style.display = 'block';
+
+            // Оновлюємо активні кнопки головного меню
+            const buttons = document.querySelectorAll('.main-category-menu .tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+
+        // Перемикання підкатегорій
+            function openSubCategory(evt, subId, parentCatId) {
+            const parentSection = document.getElementById(parentCatId);
+            
+            // Ховаємо всі підкатегорії всередині цієї головної категорії
+            const subContents = parentSection.querySelectorAll('.sub-content');
+            subContents.forEach(sub => sub.classList.remove('active-sub'));
+
+            // Знімаємо підсвічування з кнопок цього підменю
+            const subButtons = parentSection.querySelectorAll('.sub-category-menu .tab-btn');
+            subButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Активуємо потрібну підкатегорію і кнопку
+            document.getElementById(subId).classList.add('active-sub');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
